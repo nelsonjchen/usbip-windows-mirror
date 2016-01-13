@@ -154,6 +154,9 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	/* disable output buffering (needed to read the pipe when launched from another program) */
+	setbuf(stderr, NULL);
+
 	ret = 0;
 	switch(cmd) {
 		case cmd_attach:
