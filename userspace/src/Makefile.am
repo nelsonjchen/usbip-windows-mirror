@@ -1,10 +1,8 @@
-AM_CPPFLAGS := -I$(top_srcdir)/libsrc -DUSBIDS_FILE='"@USBIDS_DIR@/usb.ids"'
+AM_CPPFLAGS := -I$(top_srcdir)/libsrc
 AM_CFLAGS   := @EXTRA_CFLAGS@ @PACKAGE_CFLAGS@
-LDADD       := $(top_srcdir)/libsrc/libusbip.la @PACKAGE_LIBS@
 
-sbin_PROGRAMS := usbip usbipd usbip_bind_driver
+sbin_PROGRAMS := usbip
 
-usbip_SOURCES = usbip.c usbip_network.c usbip_network.h usbip_linux.c usbip_platform.h
-usbipd_SOURCES := usbipd.c usbip_network.c usbip_network.h
-usbip_bind_driver_SOURCES := bind-driver.c utils.c utils.h \
-			     usbip_network.h usbip_network.c
+usbip_SOURCES = usbip.c usbip_network.c usbip_network.h usbip_windows.c usbip_platform.h windows/getopt.c windows/getopt_long.c
+usbip_LDADD = -lws2_32 -lsetupapi -lusbip
+usbip_LDFLAGS = -L$(top_builddir)/libsrc

@@ -93,7 +93,7 @@ static char * usbip_vbus_dev_node_name(char *buf, unsigned long buf_len)
 		}
 
 		// Check if we got the correct device.
-		if (strcmp(hardwareID, "root\\usbipenum") != 0) {
+		if (strcasecmp(hardwareID, "root\\USBIPEnum") != 0) {
 			// Wrong hardware ID. Get the next one.
 			memberIndex++;
 			continue;
