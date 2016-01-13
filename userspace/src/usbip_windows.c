@@ -920,7 +920,7 @@ int attach_device(char * host, char * busid)
 	CloseHandle(devfd);
 
 	dbg("closing connection to peer");
-	closesocket(sockfd);
+	close(sockfd);
 
 	dbg("done");
 	return 1;
@@ -989,6 +989,7 @@ int init_socket()
 
 int cleanup_socket()
 {
-	WSACleanup();
+	//TODO: Figure why this is causing an exception
+	//WSACleanup();
 	return 0;
 }
