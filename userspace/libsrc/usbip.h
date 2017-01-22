@@ -16,6 +16,12 @@
 #include <ctype.h>
 #include <limits.h>
 
+#ifdef _MSC_VER 
+#define strncasecmp _strnicmp
+#define strcasecmp _stricmp
+#endif
+
+
 #define UNUSED(x) (void)(x)
 
 #ifdef __linux__
